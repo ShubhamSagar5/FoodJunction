@@ -1,14 +1,18 @@
 import React from 'react'
 
-const RestaurantCard = () => {
+const RestaurantCard = ({resData}) => {
+  
+  const {avgRating,cloudinaryImageId,costForTwo,cuisines,id,name,sla} = resData.info
+  const imgURL = "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/"
   return (
     <div className='restaurantCard'>
 
-        <img className='resImg' src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/byilgyrcfz690ryoasww" alt="" />
-        <h3>Meghana Foods</h3>
-        <h4>PavBhaji,Samosa,Kachori</h4>
-        <h4>4.4 Stars</h4>
-        <h4>38 Min</h4>
+        <img className='resImg' src={imgURL+cloudinaryImageId}  alt="resIMG" />
+        <h3>{name}</h3>
+        <h4>{cuisines.join(',')}</h4>
+        <h4>{costForTwo}</h4>
+        <h4>{avgRating} Stars</h4>
+        <h4>{sla.deliveryTime} Min</h4>
 
     </div>
   )
