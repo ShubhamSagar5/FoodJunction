@@ -1,15 +1,22 @@
 import React, { useState } from 'react'
 import RestaurantCard from './RestaurantCard'
-import { restaurantsInfo } from '../utilis/data'
+import { restaurantsInfo } from '../utilis/MockData'
 
 const Body = () => {
   
   const [resData ,setResData] = useState(restaurantsInfo)
-  console.log(resData)
+  
+
+  const handleTopRated = () => {
+    setResData(resData.filter((res)=> res.info.avgRating > 4))
+  }
+ 
+   
   return (
     <div className='body'>
       <div className='search'>
         <h2>Search</h2>
+        <button onClick={handleTopRated}>Top reated Hotel</button>
       </div>
       <div className='restaurantContainer'>
         {

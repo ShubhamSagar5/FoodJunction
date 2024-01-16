@@ -1,10 +1,11 @@
 import React from "react";
+import { APP_LOGO } from "../utilis/Constant";
 
 const Header = () => {
   return (
     <div className="header">
       <div className="logo">
-        <img className="logoImg" src="https://play-lh.googleusercontent.com/cQl93dTb4UzEZPSuosaxW-5z8yGiMy0IagtEUx6bTZ6E63S5Q3iYFCE8AgiboEoBmmM=w240-h480-rw" alt="" />
+        <img className="logoImg" src={APP_LOGO} alt="" />
       </div>
       <div className="navItems">
         <ul>

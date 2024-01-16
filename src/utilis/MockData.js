@@ -15,7 +15,7 @@ export const restaurantsInfo = [
           "Tandoor",
           "Beverages"
         ],
-        "avgRating": 4.2,
+        "avgRating": 2.2,
         "parentId": "36155",
         "avgRatingString": "4.2",
         "totalRatingsString": "1K+",
@@ -99,9 +99,9 @@ export const restaurantsInfo = [
           "Thalis",
           "Home Food"
         ],
-        "avgRating": 4.4,
+        "avgRating": 1.4,
         "parentId": "10655",
-        "avgRatingString": "4.4",
+        "avgRatingString": "2.4",
         "totalRatingsString": "1K+",
         "sla": {
           "deliveryTime": 19,
@@ -196,7 +196,7 @@ export const restaurantsInfo = [
           "South Indian",
           "North Indian"
         ],
-        "avgRating": 4.2,
+        "avgRating": 2.2,
         "parentId": "2120",
         "avgRatingString": "4.2",
         "totalRatingsString": "10K+",
@@ -1396,3 +1396,4 @@ export const restaurantsInfo = [
       }
     }
   ]
+
