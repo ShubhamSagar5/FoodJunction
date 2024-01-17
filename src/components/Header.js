@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { APP_LOGO } from "../utilis/Constant";
 
 const Header = () => {
+ 
+  const [authBtn,setAUthBtn] = useState(true)
+ 
   return (
     <div className="header">
       <div className="logo">
@@ -13,6 +16,9 @@ const Header = () => {
           <li>About Us</li>
           <li>Contact Us</li>
           <li>Cart</li>
+          <button className="loginBtn" onClick={()=>{
+            setAUthBtn(!authBtn)
+          }}>{authBtn ? "Login" : "LogOut"}</button>
         </ul>
       </div>
     </div>

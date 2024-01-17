@@ -67,3 +67,15 @@
   display: flex;
   flex-wrap: wrap;
 }
+
+.loginBtn {
+  margin: 5px;
+  
+}
+.functionality{
+  margin: 10px;
+  display: flex;
+}
+.topRatedFun{
+  margin-left: 5px;
+}
