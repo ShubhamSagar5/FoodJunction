@@ -54,3 +54,16 @@
   
 }
 
+.shimmerCard{
+  background-color: #f0f0f0;
+  padding: 5px;
+  width: 250px;
+  height: 350px;
+  margin: 20px;
+  border-radius: 5px;
+}
+
+.shimmerCardConainer {
+  display: flex;
+  flex-wrap: wrap;
+}
