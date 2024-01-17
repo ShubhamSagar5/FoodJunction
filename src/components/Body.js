@@ -5,15 +5,23 @@ import Shimmer from './Shimmer'
 
 const Body = () => {
   
-  const [resData ,setResData] = useState(restaurantsInfo)
+  const [resData ,setResData] = useState([])
   
+  const fetchData = async () => {
+    const ResDataAPI = await fetch("https://www.swiggy.com/mapi/homepage/getCards?lat=19.9974533&lng=73.78980229999999")
+    const data = await ResDataAPI.json()
+    setResData(data.data.success.cards[4].gridWidget.gridElements.infoWithStyle.restaurants      )
+    // setResData(data?.data?.success?.cards[3]?.gridWidget?.gridElements?.infoWithStyle?.restaurants)
+  }
 
-
+useEffect(()=>{
+  fetchData()
+},[])
   
 
 
   const handleTopRated = () => {
-    setResData(resData.filter((res)=> res.info.avgRating > 4))
+    setResData(resData.filter((res)=> res.info.avgRating > 4.5))
   }
  
   if(resData.length === 0 ){
