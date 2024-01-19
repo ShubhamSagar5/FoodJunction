@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import RestaurantCard from './RestaurantCard'
 import { restaurantsInfo } from '../utilis/MockData'
 import Shimmer from './Shimmer'
+import { Link } from 'react-router-dom'
 
 const Body = () => {
   
@@ -10,16 +11,17 @@ const Body = () => {
   const [filterRes,setFilterRes] = useState(restaurantsInfo)
 
   const [searchText,setSearchText] = useState('')
-  // const fetchData = async () => {
-  //   const ResDataAPI = await fetch("https://www.swiggy.com/mapi/homepage/getCards?lat=19.9974533&lng=73.78980229999999")
-  //   const data = await ResDataAPI.json()
-  //   setResData(data.data.success.cards[4].gridWidget.gridElements.infoWithStyle.restaurants      )
-  //   // setResData(data?.data?.success?.cards[3]?.gridWidget?.gridElements?.infoWithStyle?.restaurants)
-  // }
+  const fetchData = async () => {
+    const ResDataAPI = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=19.9974533&lng=73.78980229999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING")
+    const data = await ResDataAPI.json()
+    setResData(data?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
+    setFilterRes(data?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
+    // setResData(data?.data?.success?.cards[3]?.gridWidget?.gridElements?.infoWithStyle?.restaurants)
+  }
 
-// useEffect(()=>{
-//   fetchData()
-// },[])
+useEffect(()=>{
+  fetchData()
+},[])
   
 
 
@@ -46,7 +48,7 @@ const Body = () => {
             <button onClick={handleSeacrhFun}>Search</button>
         </div>
         <div className='topRatedBtn'>
-          <button onClick={()=>{setFilterRes(restaurantsInfo)}}>All Restaurants</button>
+          <button onClick={()=>{setFilterRes(resData)}}>All Restaurants</button>
         </div>
         <div className='topRatedBtn'>
                   <button onClick={handleTopRated}>Top reated Hotel</button>
@@ -55,7 +57,7 @@ const Body = () => {
       </div>
       <div className='restaurantContainer'>
         {
-        filterRes?.map((res)=>(<RestaurantCard key={res.info.id} resData={res}/>))
+        filterRes?.map((res)=>(<Link to={"/restaurantsMenu/"+res.info.id} key={res.info.id} className='linkCard'><RestaurantCard  resData={res}/></Link>))
         }
    
         

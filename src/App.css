@@ -30,6 +30,13 @@
   margin: 9px 3px;
   text-decoration: none;
   list-style: none;
+  color: black;
+}
+
+.linkCard {
+  text-decoration: none;
+  list-style: none;
+  color: black;
 }
 
 .navItems {
