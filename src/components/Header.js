@@ -20,7 +20,9 @@ const Header = () => {
         <Link to="/" className="link"><li >  Home</li></Link>  
           <Link  to="about" className="link"> <li> About Us</li></Link>
           <Link to="contactUs" className="link"><li>  Contact_Us</li></Link>
+          <Link to="/grocery"  className="link"><li>Grocery</li></Link>
           <li>Cart</li>
+          
           <button className="loginBtn" onClick={()=>{
             setAUthBtn(!authBtn)
           }}>{authBtn ? "Login" : "LogOut"}</button>
