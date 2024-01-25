@@ -3,6 +3,7 @@ import RestaurantCard from './RestaurantCard'
 import { restaurantsInfo } from '../utilis/MockData'
 import Shimmer from './Shimmer'
 import { Link } from 'react-router-dom'
+import useOnlineStatus from '../utilis/OnlineStatus'
 
 const Body = () => {
   
@@ -11,6 +12,9 @@ const Body = () => {
   const [filterRes,setFilterRes] = useState(restaurantsInfo)
 
   const [searchText,setSearchText] = useState('')
+
+  const onlineStatus = useOnlineStatus()
+
   const fetchData = async () => {
     const ResDataAPI = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=19.9974533&lng=73.78980229999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING")
     const data = await ResDataAPI.json()
@@ -35,6 +39,7 @@ useEffect(()=>{
   }
 
 
+  if(onlineStatus === false) return <h1>You Are Like Offline Please Check Your Internet Connection</h1>
 
   if(resData.length === 0 ){
     return <Shimmer/>

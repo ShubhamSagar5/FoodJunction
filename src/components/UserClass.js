@@ -6,7 +6,10 @@ class UserClass extends React.Component {
 
     this.state = {
         UserInfo: {
-
+            avatar_url:"www.abc.com",
+            location:"XYZ",
+            name:"ABC",
+            url:"www.abc.com"
         }
     }
 
