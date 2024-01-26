@@ -24,17 +24,17 @@ const RestaurantsMenu = () => {
 console.log(resMenu?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card)
 
     return (
-        <div>
-            <h2>{name}</h2>
-            <p>{cuisines.join(",")} {costForTwoMessage}</p>
-            <p>{areaName}</p>
-            <p>{sla.deliveryTime} Min</p>
+        <div className="p-2 m-2">
+            <h2 className="text-3xl font-semibold p-1 m-1">{name}</h2>
+            <p className=" text-lg font-semibold p-1 m-1">{cuisines.join(",")} {costForTwoMessage}</p>
+            <p className=" text-lg font-semibold p-1 m-1">{areaName}</p>
+            <p className=" text-lg font-semibold p-1 m-1">{sla.deliveryTime} Min</p>
            
-            <h2>Menu</h2>
-            <ul>
+            <h2 className=" text-lg font-semibold p-1 m-1">Menu : </h2>
+            <ul className=" text-lg font-normal p-3 m-1 ">
                 {
                     itemCards?.map((res)=> {
-                       return <li>{res.card.info.name} - Rs- {res.card.info.price/100}</li> })
+                       return <li className="list-decimal m-4">{res.card.info.name} - Rs- {res.card.info.price/100}</li> })
                 }
             </ul>
         </div>

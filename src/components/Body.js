@@ -47,20 +47,20 @@ useEffect(()=>{
 
   return (
     <div className='body'>
-      <div className='functionality'>
+      <div className='flex p-2 m-2'>
         <div className='searchContainer'>
-            <input type="text" value={searchText} onChange={(e)=>{setSearchText(e.target.value)}}/>
-            <button onClick={handleSeacrhFun}>Search</button>
+            <input className='border border-black rounded-lg' type="text" value={searchText} onChange={(e)=>{setSearchText(e.target.value)}}/>
+            <button onClick={handleSeacrhFun} className='p-2 m-2 bg-gray-200 rounded-lg hover:bg-gray-400'>Search</button>
         </div>
         <div className='topRatedBtn'>
-          <button onClick={()=>{setFilterRes(resData)}}>All Restaurants</button>
+          <button className='p-2 m-2 bg-gray-200 rounded-lg hover:bg-gray-400' onClick={()=>{setFilterRes(resData)}}>All Restaurants</button>
         </div>
         <div className='topRatedBtn'>
-                  <button onClick={handleTopRated}>Top reated Hotel</button>
+                  <button className='p-2 m-2 bg-gray-200 rounded-lg hover:bg-gray-400' onClick={handleTopRated}>Top reated Hotel</button>
 
         </div>
       </div>
-      <div className='restaurantContainer'>
+      <div className='flex flex-wrap gap-7 m-3'>
         {
         filterRes?.map((res)=>(<Link to={"/restaurantsMenu/"+res.info.id} key={res.info.id} className='linkCard'><RestaurantCard  resData={res}/></Link>))
         }
