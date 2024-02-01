@@ -19,4 +19,17 @@ const RestaurantCard = ({resData}) => {
   )
 }
 
+
+
+export const withPromotedCard = (RestaurantCard) => {
+  return (props) => {
+    return (
+      <div>
+        <p className=' absolute bg-black text-white p-2 w-16 m-2 rounded-lg text-center'>Veg</p>
+        <RestaurantCard {...props}/>
+      </div>
+    )
+  }
+}
+
 export default RestaurantCard

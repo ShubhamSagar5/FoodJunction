@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import RestaurantCard from './RestaurantCard'
+import RestaurantCard, { withPromotedCard } from './RestaurantCard'
 import { restaurantsInfo } from '../utilis/MockData'
 import Shimmer from './Shimmer'
 import { Link } from 'react-router-dom'
@@ -14,6 +14,9 @@ const Body = () => {
   const [searchText,setSearchText] = useState('')
 
   const onlineStatus = useOnlineStatus()
+
+  const RestaurantPromotedCard = withPromotedCard(RestaurantCard)
+
 
   const fetchData = async () => {
     const ResDataAPI = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=19.9974533&lng=73.78980229999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING")
@@ -30,7 +33,7 @@ useEffect(()=>{
 
 
   const handleTopRated = () => {
-    setFilterRes(resData.filter((res)=> res.info.avgRating > 4.5))
+    setFilterRes(resData.filter((res)=> res.info.avgRating > 4.3))
   }
  
   const handleSeacrhFun = () => {
@@ -62,7 +65,11 @@ useEffect(()=>{
       </div>
       <div className='flex flex-wrap gap-7 m-3'>
         {
-        filterRes?.map((res)=>(<Link to={"/restaurantsMenu/"+res.info.id} key={res.info.id} className='linkCard'><RestaurantCard  resData={res}/></Link>))
+        filterRes?.map((res)=>(<Link to={"/restaurantsMenu/"+res.info.id} key={res.info.id} className='linkCard'>
+        {
+          res.info.veg ? <RestaurantPromotedCard  resData={res}/> :  <RestaurantCard  resData={res}/>
+        }
+       </Link>))
         }
    
         
