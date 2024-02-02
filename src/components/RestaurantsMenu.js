@@ -3,6 +3,7 @@ import Shimmer from "./Shimmer"
 import { RES_MENU_URL } from "../utilis/Constant"
 import { useParams } from "react-router-dom"
 import useRestaurantMenu from "../utilis/useRestaurantMenu"
+import ResMenuList from "./ResMenuList"
 
 const RestaurantsMenu = () => {
    
@@ -21,22 +22,23 @@ const RestaurantsMenu = () => {
    const {areaName,costForTwoMessage,cuisines,name,sla,totalRatingsString} = resMenu?.data?.cards[0]?.card?.card?.info
    const {itemCards} = resMenu?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card.card
 
-console.log(resMenu?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card)
+   const category = resMenu?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter((card)=> card?.card?.card?.["@type"] === "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory")
+
+console.log(category)
 
     return (
-        <div className="p-2 m-2">
+        <div className="p-2 m-2 text-center">
             <h2 className="text-3xl font-semibold p-1 m-1">{name}</h2>
             <p className=" text-lg font-semibold p-1 m-1">{cuisines.join(",")} {costForTwoMessage}</p>
             <p className=" text-lg font-semibold p-1 m-1">{areaName}</p>
             <p className=" text-lg font-semibold p-1 m-1">{sla.deliveryTime} Min</p>
            
-            <h2 className=" text-lg font-semibold p-1 m-1">Menu : </h2>
-            <ul className=" text-lg font-normal p-3 m-1 ">
-                {
-                    itemCards?.map((res)=> {
-                       return <li className="list-decimal m-4">{res.card.info.name} - Rs- {res.card.info.price/100}</li> })
-                }
-            </ul>
+           <div>
+            {
+                category.map((card)=> <ResMenuList key={card.card.card.title} data={card.card.card}/>)
+            }
+           </div>
+            
         </div>
     )
 }
