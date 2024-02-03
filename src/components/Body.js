@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import RestaurantCard, { withPromotedCard } from './RestaurantCard'
 import { restaurantsInfo } from '../utilis/MockData'
 import Shimmer from './Shimmer'
 import { Link } from 'react-router-dom'
 import useOnlineStatus from '../utilis/OnlineStatus'
+import UserContext from '../utilis/UserContext'
 
 const Body = () => {
   
@@ -16,6 +17,8 @@ const Body = () => {
   const onlineStatus = useOnlineStatus()
 
   const RestaurantPromotedCard = withPromotedCard(RestaurantCard)
+
+  const {loggedInUser,setUserName} = useContext(UserContext)
 
 
   const fetchData = async () => {
@@ -50,7 +53,7 @@ useEffect(()=>{
 
   return (
     <div className='body'>
-      <div className='flex p-2 m-2'>
+      <div className='flex p-2 m-2 items-center'>
         <div className='searchContainer'>
             <input className='border border-black rounded-lg' type="text" value={searchText} onChange={(e)=>{setSearchText(e.target.value)}}/>
             <button onClick={handleSeacrhFun} className='p-2 m-2 bg-gray-200 rounded-lg hover:bg-gray-400'>Search</button>
@@ -61,6 +64,10 @@ useEffect(()=>{
         <div className='topRatedBtn'>
                   <button className='p-2 m-2 bg-gray-200 rounded-lg hover:bg-gray-400' onClick={handleTopRated}>Top reated Hotel</button>
 
+        </div>
+        <div className=''>
+          <label className='p-2 m-2'>User Name : </label>
+          <input className='border border-black rounded-lg ' type="text" value={loggedInUser} onChange={(e)=> setUserName(e.target.value)}/>
         </div>
       </div>
       <div className='flex flex-wrap gap-7 m-3'>

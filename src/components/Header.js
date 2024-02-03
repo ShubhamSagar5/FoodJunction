@@ -1,13 +1,16 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { APP_LOGO } from "../utilis/Constant";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utilis/OnlineStatus";
+import UserContext from "../utilis/UserContext";
 
 const Header = () => {
  
   const [authBtn,setAUthBtn] = useState(true)
  
   const onlineStatus = useOnlineStatus()
+
+  const {loggedInUser} = useContext(UserContext)
 
   return (
     <div className='flex justify-between border border-black  mt-0 bg-pink-200 text-xl shadow-lg'>
@@ -26,6 +29,8 @@ const Header = () => {
           <button className="p-2 m-2 bg-gray-200 rounded-lg hover:bg-gray-400" onClick={()=>{
             setAUthBtn(!authBtn)
           }}>{authBtn ? "Login" : "LogOut"}</button>
+
+          <li className="p-2 m-2">{loggedInUser}</li>
         </ul>
       </div>
     </div>
