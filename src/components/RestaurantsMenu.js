@@ -10,7 +10,7 @@ const RestaurantsMenu = () => {
 
     const {resId} = useParams()
 
-  
+  const [showItem,setShowItem] = useState(null)
    
     const resMenu = useRestaurantMenu(resId)
    
@@ -35,7 +35,7 @@ console.log(category)
            
            <div>
             {
-                category.map((card)=> <ResMenuList key={card.card.card.title} data={card.card.card}/>)
+                category.map((card,index)=> <ResMenuList key={card.card.card.title} data={card.card.card} showItem={index === showItem ? true : false} setShowItem={()=> setShowItem(showItem === index ? 'null' : index)}/>)
             }
            </div>
             

@@ -1,14 +1,14 @@
 import { useState } from "react"
 import ItemList from "./ItemList"
 
-const ResMenuList = ({data}) => {
+const ResMenuList = ({data,showItem,setShowItem}) => {
     
     // console.log(data)
 
-    const [show,setShow] = useState(false)
+    
 
     const handleAccordian = () => {
-        setShow(!show)
+        setShowItem()
     }
 
 
@@ -20,9 +20,10 @@ const ResMenuList = ({data}) => {
                     <span>⬇️</span>
                 </div>
                 <div>
-                    {show && <ItemList data={data.itemCards}/>}
+                    {showItem && <ItemList data={data.itemCards}/>}
                 </div>
             </div>
+
 
         </div>
     )
