@@ -29,7 +29,7 @@ const Header = () => {
           <Link  to="about" className="link"> <li className="p-2 m-2"> About Us</li></Link>
           <Link to="contactUs" className="link"><li className="p-2 m-2">  Contact_Us</li></Link>
           <Link to="/grocery"  className="link"><li className="p-2 m-2">Grocery</li></Link>
-          <li className="p-2 m-2">Cart({cart.length})</li>
+         <Link to="/cart"><li className="p-2 m-2">Cart({cart.length})</li></Link> 
           
           <button className="p-2 m-2 bg-gray-200 rounded-lg hover:bg-gray-400" onClick={()=>{
             setAUthBtn(!authBtn)
