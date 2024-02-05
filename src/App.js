@@ -6,6 +6,8 @@ import Footer from './components/Footer';
 import Header from './components/Header';
 import UserContext from './utilis/UserContext';
 import { useEffect, useState } from 'react';
+import {Provider} from 'react-redux'
+import appStore from './utilis/appStore';
 
 const App = () => {
   
@@ -23,13 +25,16 @@ const App = () => {
   
   
   return (
-    <UserContext.Provider value={{loggedInUser:userName , setUserName}}>
+    <Provider store={appStore}>
+          <UserContext.Provider value={{loggedInUser:userName , setUserName}}>
        <div>
       <Header/>
       <Outlet/>
       <Footer/>
     </div>
     </UserContext.Provider>
+    </Provider>
+
    
   )
 }

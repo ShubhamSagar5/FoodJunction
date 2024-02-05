@@ -3,6 +3,7 @@ import { APP_LOGO } from "../utilis/Constant";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utilis/OnlineStatus";
 import UserContext from "../utilis/UserContext";
+import { useSelector } from "react-redux";
 
 const Header = () => {
  
@@ -11,6 +12,10 @@ const Header = () => {
   const onlineStatus = useOnlineStatus()
 
   const {loggedInUser} = useContext(UserContext)
+
+  const cart = useSelector((store)=>store.cart.items)
+
+  console.log(cart)
 
   return (
     <div className='flex justify-between border border-black  mt-0 bg-pink-200 text-xl shadow-lg'>
@@ -24,7 +29,7 @@ const Header = () => {
           <Link  to="about" className="link"> <li className="p-2 m-2"> About Us</li></Link>
           <Link to="contactUs" className="link"><li className="p-2 m-2">  Contact_Us</li></Link>
           <Link to="/grocery"  className="link"><li className="p-2 m-2">Grocery</li></Link>
-          <li className="p-2 m-2">Cart</li>
+          <li className="p-2 m-2">Cart({cart.length})</li>
           
           <button className="p-2 m-2 bg-gray-200 rounded-lg hover:bg-gray-400" onClick={()=>{
             setAUthBtn(!authBtn)
