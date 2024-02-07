@@ -24,7 +24,7 @@ const RestaurantCard = ({resData}) => {
 
 
 
-export const withPromotedCard = (RestaurantCard) => {
+export const WithPromotedCard = (RestaurantCard) => {
   return (props) => {
     return (
       <div>

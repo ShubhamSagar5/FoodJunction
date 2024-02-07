@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
-import RestaurantCard, { withPromotedCard } from './RestaurantCard'
+import RestaurantCard, { WithPromotedCard } from './RestaurantCard'
 import { restaurantsInfo } from '../utilis/MockData'
 import Shimmer from './Shimmer'
 import { Link } from 'react-router-dom'
@@ -16,7 +16,7 @@ const Body = () => {
 
   const onlineStatus = useOnlineStatus()
 
-  const RestaurantPromotedCard = withPromotedCard(RestaurantCard)
+  const RestaurantPromotedCard = WithPromotedCard(RestaurantCard)
 
   const {loggedInUser,setUserName} = useContext(UserContext)
 
@@ -50,6 +50,8 @@ useEffect(()=>{
   if(resData.length === 0 ){
     return <Shimmer/>
   } 
+
+  console.log(resData)
 
   return (
     <div className='body'>
